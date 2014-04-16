@@ -1,3 +1,30 @@
 <div class="container">
   <h2 id='title'>Welcome to FeedStack</h2>
+
+  <div class="row">
+    {{#each feeds}}
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a {{bind-attr href='url'}} class="pull-right">RSS</a>
+            <h3 class="panel-title" title="{{unbound url}}">{{name}}</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              {{#each feedItems}}
+                <li class="list-group-item">
+                  <p><a target="_blank" {{bind-attr href=link}} title="{{unbound title}}">{{title}}</a></p>
+                  <p>{{contentSnippet}}</p>
+                  <p>{{created}} by {{author}}</p>
+                </li>
+              {{else}}
+                <li class="list-group-item">No feed items available.</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
 </div>
